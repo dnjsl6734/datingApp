@@ -16,6 +16,7 @@ const Tab = createBottomTabNavigator();
 export const UserContext = React.createContext();
 
 
+
 const App = () => {
 
   return (
@@ -33,10 +34,10 @@ const App = () => {
 const HomeTabs = () => {
   return (
     <Tab.Navigator initialRouteName='HomeTab'>
-      <Tab.Screen name="HomeTab" component={HomeScreen} />
-      <Tab.Screen name="CommunityTab" component={CommunityScreen} />
-      <Tab.Screen name="ChatTab" component={ChatScreen} />
-      <Tab.Screen name="SettingTab" component={SettingScreen} />
+      <Tab.Screen name="HomeTab" component={HomeScreen} options={{ headerShown: false }}/>
+      <Tab.Screen name="CommunityTab" component={CommunityScreen} options={{ headerShown: false }}/>
+      <Tab.Screen name="ChatTab" component={ChatScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="SettingTab" component={SettingScreen} options={{ headerShown: false }}/>
     </Tab.Navigator>
   );
 };
