@@ -5,8 +5,8 @@ import {
 } from 'react-native-responsive-dimensions';
 
 const basicDimensions = {
-    width: 360,
-    height: 800,
+    width: 375,
+    height: 812,
 };
 
 const width = (basicwidth) => {

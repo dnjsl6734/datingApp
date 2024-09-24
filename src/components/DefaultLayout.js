@@ -1,14 +1,21 @@
-import { StyleSheet, Text, View, ScrollView, RefreshControl, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, RefreshControl } from 'react-native';
 import React, { useState } from 'react';
+import Theme from '../assets/styles/layout';
+import styled from 'styled-components/native';
 
-const DefaultLayout = ({ children,onclick }) => {
+
+const DefaultLayout = ({ children, onclick }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const onRefresh = () => onclick;
- 
+  const onRefresh = () => {
+    setIsRefreshing(true);
+    if (onclick != null)
+      onclick();
+    setIsRefreshing(false);
+  };
+
   return (
-    <ScrollView
-      style={styles.container}
+    <ScrollView // style={styles.container}
       refreshControl={
         <RefreshControl
           refreshing={isRefreshing}
@@ -16,16 +23,20 @@ const DefaultLayout = ({ children,onclick }) => {
         />
       }
     >
-      {children}
-      <Text>{`${isRefreshing}`}</Text>
+      <ViewLayout>{children}</ViewLayout>
     </ScrollView>
+
   );
 };
 
 export default DefaultLayout;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+const ViewLayout = styled.View`
+  padding: ${Theme.height(15)}px ${Theme.width(16)}px;
+`;
+
+//const styles = StyleSheet.create({
+//  container: {
+//    flex: 1,
+//  },
+//});
